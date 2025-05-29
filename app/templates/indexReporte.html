@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reporte de Checklist</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/indexReporte.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div style="text-align: right; margin-bottom: 20px;">
+        <button onclick="window.location.href='/indexchecklist'" style="background:#34495e;">📝 Volver al Checklist</button>
+    </div>
+
+    <h1>Reporte de Checklist</h1>
+
+    <div class="stats">
+      <p><strong>Total de ítems:</strong> <span id="total"></span></p>
+      <p><strong>Completados:</strong> <span id="completados"></span></p>
+      <p><strong>Pendientes:</strong> <span id="pendientes"></span></p>
+      <p><strong>Avance:</strong> <span id="porcentaje"></span>%</p>
+    </div>
+
+    <canvas id="grafico" width="400" height="400"></canvas>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/indexReporte.js') }}"></script>
+</body>
+</html>

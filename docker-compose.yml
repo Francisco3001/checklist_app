@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+  postgres:
+    build:
+      context: ./database
+    container_name: bdd_checklist
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  postgres_test:
+    image: postgres:15
+    container_name: bdd_checklist_test
+    ports:
+      - "${DB_PORT_TEST}:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME_TEST}
+      POSTGRES_USER: ${DB_USER_TEST}
+      POSTGRES_PASSWORD: ${DB_PASSWORD_TEST}
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./app
+    container_name: app_checklist
+    ports:
+      - "80:80"
+    environment:
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+    command: python run.py
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  postgres_test_data:

@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+  background: #f0f2f5;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  text-align: center;
+}
+
+.stats p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  opacity: 0.9;
+}

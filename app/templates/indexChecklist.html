@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checklist</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/indexChecklist.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div style="text-align: right; margin-bottom: 10px;">
+      <button onclick="window.location.href='/indexreporte'" style="background:#2980b9;">📊 Ver Reporte</button>
+    </div>
+
+    <h1>Checklist</h1>
+
+    <div class="add-item">
+      <input type="text" id="nombreInput" placeholder="Nombre" />
+      <input type="text" id="descripcionInput" placeholder="Descripción" />
+      <button onclick="crearItem()">Agregar</button>
+    </div>
+
+    <ul id="listaItems"></ul>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/indexChecklist.js') }}"></script>
+</body>
+</html>
