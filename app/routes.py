@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, redirect, render_template, request, url_for
 
 from app.decorators.auth_decorator import requiere_autenticacion
 
@@ -23,7 +23,6 @@ def indexChecklist_get():
 @requiere_autenticacion
 def reporte_view():
     return render_template("indexReporte.html")
-
 
 
 #Backend
